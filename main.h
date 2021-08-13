@@ -17,6 +17,7 @@ uint8_t input_binary(void);
 uint8_t decoder_input(void);
 void check_power(void);
 uint8_t set_s_bit(void);
+uint8_t select_mem_no(void);
 
 //parts
 uint8_t nmos(uint8_t n);
@@ -26,7 +27,6 @@ uint8_t nand_gate(uint8_t a, uint8_t b);
 uint8_t nand_gate_3(uint8_t a, uint8_t b, uint8_t c);
 uint8_t bit(uint8_t n, uint8_t s_bit);
 uint8_t mem_byte(uint8_t s_bit);
-uint8_t select_mem_no(void);
 uint8_t* decoder(uint8_t a, uint8_t b, uint8_t c);
 uint8_t* ram_8_byte();
 
