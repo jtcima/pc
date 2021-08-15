@@ -9,15 +9,21 @@
 int main()
 {
     check_power();
+    /*
     while (true)
     {
-        ram_8_byte();
-    }
+        //ram_8_byte();
+    }*/
     //decoder_extended_input_circuit_a(1);
     //decoder_extended_input_circuit_b(0);
     //decoder_extended_input_circuit_c(0);
     //decoder(1,1,0);
     //select_mem_no();
+    uint8_t input1 = input();
+    uint8_t input2 = input();
+    uint8_t input3 = input();
+    uint8_t _multiplex = multiplexer(input1,input2,input3);
+    printf("multiplex: %u\n", _multiplex);
     /*
     uint8_t input1 = input();
     uint8_t input2 = input();

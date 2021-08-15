@@ -19,16 +19,19 @@ void check_power(void);
 uint8_t set_s_bit(void);
 uint8_t select_mem_no(void);
 
+//memory
+uint8_t bit(uint8_t n, uint8_t s_bit);
+uint8_t mem_byte(uint8_t s_bit);
+uint8_t* ram_8_byte();
+
 //parts
 uint8_t nmos(uint8_t n);
 uint8_t pmos(uint8_t n);
 uint8_t not_gate(uint8_t n);
 uint8_t nand_gate(uint8_t a, uint8_t b);
 uint8_t nand_gate_3(uint8_t a, uint8_t b, uint8_t c);
-uint8_t bit(uint8_t n, uint8_t s_bit);
-uint8_t mem_byte(uint8_t s_bit);
 uint8_t* decoder(uint8_t a, uint8_t b, uint8_t c);
-uint8_t* ram_8_byte();
+uint8_t multiplexer(uint8_t x, uint8_t y, uint8_t s);
 
 //circuit
 bool pmos_circuit_status(uint8_t n);

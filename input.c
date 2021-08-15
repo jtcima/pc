@@ -49,3 +49,22 @@ uint8_t set_s_bit(void)
     scanf("%hhu", &s_bit);
     return s_bit;
 }
+
+uint8_t select_mem_no(void)
+{
+    uint8_t a, b, c;
+    printf("\n---Memory Address Selection---\n");
+    a = decoder_input();
+    b = decoder_input();
+    c = decoder_input();
+    uint8_t i = 0;
+    
+    while((i < 8) && (decoder(a,b,c)[i] != 1))
+    {
+        i++;
+    }
+    printf("\n---Memory Block %hhu Selected!---\n", i);
+    printf("\nWriting to memory block %u...\n", i);
+    sleep(2);
+    return i;
+}
