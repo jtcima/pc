@@ -17,16 +17,24 @@ int main()
     //decoder_extended_input_circuit_a(1);
     //decoder_extended_input_circuit_b(0);
     //decoder_extended_input_circuit_c(0);
-    //decoder(1,1,0);
+    //decoder(0,1,0);
     //select_mem_no();
-    //uint8_t arraya[8] = {1,1,0,0,0,0,0,0};
+    uint8_t arraya[8] = {1,1,0,0,0,0,0,0};
     //enabler(arraya, 1);
-    //uint8_t arrayb[8] = {1,1,1,0,0,0,0,0};
+    uint8_t arrayb[8] = {1,1,1,0,0,0,0,0};
+    /*
+    for(int i=0; i< 8; i++)
+    {
+        printf("%u", enabler(arraya, 1)[i]);
+    }*/
     
-    //printf("\n%d", alu(arrayb, arraya, 1));
+    
+    alu_final(arraya, arrayb);
+    
+    //printf("\n%d", alu(arraya, arrayb, 1));
     /*for(int i=0; i< 8; i++)
     {
-        printf("%u", dec_to_bin(-7)[i]);
+        printf("%u", dec_to_bin(-4)[i]);
     }*/
     
     

@@ -108,6 +108,7 @@ uint8_t* decoder(uint8_t a, uint8_t b, uint8_t c)
     {
         printf("%u",decoder_output[i]);
     }
+    printf("\n");
 */
     return decoder_output;
 }
@@ -136,6 +137,21 @@ uint8_t xor_gate(uint8_t control_bit, uint8_t b)
     uint8_t output;
     output = nand_gate(nand_gate(not_gate(control_bit), b), nand_gate(control_bit, not_gate(b)));
     return output;
+}
+
+//xor_gate with 1 array input
+
+uint8_t* xor_gate_1(uint8_t control_bit, uint8_t* array)
+{
+    static uint8_t array_after_xor[8];
+
+    for(int i = 0; i < 8; i++)
+    {
+        array_after_xor[i] = xor_gate(control_bit, array[i]);
+        //printf("%u", array_after_xor[i]);
+    }
+
+    return array_after_xor;
 }
 
 //8_bit xor gate
@@ -168,14 +184,16 @@ uint8_t* and_gate(uint8_t *array1, uint8_t *array2)
 //Enabler
 uint8_t* enabler(uint8_t * array, uint8_t control_bit)
 {
-    static uint8_t output[8];
+    static uint8_t output_bit[8];
+    //uint8_t output;
     for(int i = 0; i < 8; i++)
     {
-        output[i] = not_gate(nand_gate(array[i], control_bit));
+        output_bit[i] = not_gate(nand_gate(array[i], control_bit));
+        //output |= output_bit[i] << i;
         //printf("%u", output[i]);
     }
 
-    return output;
+    return output_bit;
 }
 
 
@@ -255,7 +273,7 @@ int16_t alu(uint8_t *array1, uint8_t *array2, uint8_t control_bit)
     for(int i = 0; i < 8; i++)
     {
         array_after_xor[i] = xor_gate(control_bit, array2[i]);
-        printf("%u", array_after_xor[i]);
+        //printf("%u", array_after_xor[i]);
     }
 
     if(!control_bit)
@@ -271,7 +289,7 @@ int16_t alu(uint8_t *array1, uint8_t *array2, uint8_t control_bit)
             num2 |= array2[i] << i;
         }
 
-        printf("\n%d %d\n", num1, num2);
+        //printf("\n%d %d\n", num1, num2);
 
         if(num1 > num2)
         {

@@ -6,6 +6,7 @@
 #include <string.h>
 #include "main.h"
 
+/*
 uint8_t reg_name(uint8_t s_bit)
 {
     uint8_t byte_output = 0;
@@ -32,7 +33,8 @@ uint8_t reg_name(uint8_t s_bit)
             byte_output |= (bits[i] << i);
         }   
     }
-/*
+
+
     printf("The binary you entered is: ");
     for(int i = 7; i >= 0; i--)
     {
@@ -40,16 +42,71 @@ uint8_t reg_name(uint8_t s_bit)
     }
     
     printf(" .In decimal format is %u.\n", result);
-*/
+
     return result;
     
 }
-
+*/
 
 //ALU final
 
-uint8_t alu_final(uint8_t *array1, uint8_t *array2)
+uint8_t* alu_final(uint8_t *array1, uint8_t *array2) //uint8_t decoder_1st_bit, uint8_t decoder_2nd_bit, uint8_t decoder_3rd_bit)
 {
-    alu(array1, array2, 0);
+    static uint8_t output[8];
+    uint8_t decoder_1st_bit = decoder_input();
+    uint8_t decoder_2nd_bit = decoder_input();
+    uint8_t decoder_3rd_bit = decoder_input();
+
+    if(decoder(decoder_1st_bit, decoder_2nd_bit, decoder_3rd_bit)[0] == 1) 
+    {    
+        for(int i = 0; i < 8; i++)
+        {
+            output[i] = enabler(dec_to_bin(alu(array1, array2, 0)), 1)[i];
+            //printf("%u", output[i]);
+        }
+        
+    }
+    if(decoder(decoder_1st_bit, decoder_2nd_bit, decoder_3rd_bit)[1] == 1)
+    {    
+        for(int i = 0; i < 8; i++)
+        {
+            output[i] = enabler(dec_to_bin(alu(array1, array2, 1)), 1)[i];
+            //printf("%u", output[i]);
+        }
+        
+    } 
+        
+    if(decoder(decoder_1st_bit, decoder_2nd_bit, decoder_3rd_bit)[2] == 1)
+    {    
+        for(int i = 0; i < 8; i++)
+        {
+            output[i] = enabler(xor_gate_1(1, array2),1)[i];
+            //printf("%u", output[i]);
+        }
+        
+    }
     
+    if(decoder(decoder_1st_bit, decoder_2nd_bit, decoder_3rd_bit)[3] == 1)
+    {    
+        for(int i = 0; i < 8; i++)
+        {
+            output[i] = enabler(eight_bit_xor_gate(array1, array2), 1)[i];
+            //printf("%u", output[i]);
+        }
+        
+    }
+        
+    if(decoder(decoder_1st_bit, decoder_2nd_bit, decoder_3rd_bit)[4] == 1)
+    {    
+        for(int i = 0; i < 8; i++)
+        {
+            output[i] = enabler(and_gate(array1, array2), 1)[i];
+            //printf("%u", output[i]);
+        }
+        
+    }
+        
+ 
+    return output;
+
 }

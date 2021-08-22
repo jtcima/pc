@@ -37,7 +37,7 @@ uint8_t input_binary(void)
 uint8_t decoder_input(void)
 {
     uint8_t num;
-    printf("\nEnter 1 or 0 for memory address: ");
+    printf("\nEnter 1 or 0: ");
     scanf("%hhu", &num);
     return num;
 

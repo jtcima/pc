@@ -1,10 +1,10 @@
 cc = gcc 
 flags = -c -Wall -O0 -o
-files = main.o parts.o circuit.o input.o mem_8_byte.o
+files = main.o parts.o circuit.o input.o cpu.o mem_8_byte.o 
 
-all: parts.o main.o circuit.o input.o mem_8_byte.o  final.elf
+all: parts.o main.o circuit.o input.o mem_8_byte.o cpu.o final.elf
 
-final.elf: main.o parts.o circuit.o input.o
+final.elf: main.o parts.o circuit.o input.o cpu.o mem_8_byte.o
 	$(cc) $(files) -o final.elf
 
 main.o: main.c
@@ -21,6 +21,9 @@ circuit.o: circuit.c
 
 parts.o: parts.c
 	$(cc) $(flags) parts.o parts.c
+
+cpu.o: cpu.c
+	$(cc) $(flags) cpu.o cpu.c
 
 
 

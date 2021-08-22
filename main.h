@@ -37,11 +37,13 @@ uint8_t *multiplexer(uint8_t *x, uint8_t *y, uint8_t s);
 uint8_t reg_name(uint8_t s_bit);
 uint8_t *and_gate(uint8_t *array1, uint8_t *array2);
 uint8_t xor_gate(uint8_t a, uint8_t b);
+uint8_t* xor_gate_1(uint8_t control_bit, uint8_t* array);
 uint8_t *eight_bit_xor_gate(uint8_t * array1, uint8_t * array2);
 int16_t adder(uint8_t *array1, uint8_t *array2, uint8_t c_bit);
-int8_t subtraction(uint8_t *array1, uint8_t *array2);
-uint8_t* enabler(uint8_t * array, uint8_t control_bit);
+//int8_t subtraction(uint8_t *array1, uint8_t *array2);
+uint8_t *enabler(uint8_t * array, uint8_t control_bit);
 int16_t alu(uint8_t *array1, uint8_t *array2, uint8_t control_bit);
+uint8_t *alu_final(uint8_t *array1, uint8_t *array2); //uint8_t decoder_1st_bit, uint8_t decoder_2nd_bit, uint8_t decoder_3rd_bit)
 
 //circuit
 bool pmos_circuit_status(uint8_t n);
