@@ -3,8 +3,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <unistd.h>
+#include <string.h>
 #include "main.h"
-
 
 int main()
 {
@@ -19,16 +19,32 @@ int main()
     //decoder_extended_input_circuit_c(0);
     //decoder(1,1,0);
     //select_mem_no();
-    uint8_t input1 = input();
-    uint8_t input2 = input();
-    uint8_t input3 = input();
-    uint8_t _multiplex = multiplexer(input1,input2,input3);
-    printf("multiplex: %u\n", _multiplex);
+    //uint8_t arraya[8] = {1,1,0,0,0,0,0,0};
+    //enabler(arraya, 1);
+    //uint8_t arrayb[8] = {1,1,1,0,0,0,0,0};
+    
+    //printf("\n%d", alu(arrayb, arraya, 1));
+    /*for(int i=0; i< 8; i++)
+    {
+        printf("%u", dec_to_bin(-7)[i]);
+    }*/
+    
+    
+    //multiplexer(arraya,arrayb,0);
+    /*for(int i = 0; i < 8; i++)
+    {
+        //printf("%u, %u, %u\n", arraya[i], arrayb[i], multiplexer(arraya,arrayb,0)[i]);
+    }*/
+   
+    
     /*
     uint8_t input1 = input();
     uint8_t input2 = input();
-    uint8_t input3 = input();
-    uint8_t _nmos = nmos(input1);
+    uint8_t _xor_gate = xor_gate(input1, input2);
+    printf("%u\n", _xor_gate);
+*/
+    //uint8_t input3 = input();
+    /*uint8_t _nmos = nmos(input1);
     uint8_t _pmos = pmos(input2);
     uint8_t _not_gate = not_gate(input1);
     uint8_t _nand_gate = nand_gate(input1,input2);

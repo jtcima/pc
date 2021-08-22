@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <unistd.h>
+#include <string.h>
 #include "main.h"
 
 
@@ -10,17 +11,17 @@ bool pmos_circuit_status(uint8_t n)
 {
     bool circuit_pmos_end_connected;
 
-    if(sPOWER_PMOS & (n == 0))
+    if(sPOWER & (n == 0))
     {
         circuit_pmos_end_connected = true;
     }
     
-    if(sPOWER_PMOS & (n == 1))
+    if(sPOWER & (n == 1))
     {
         circuit_pmos_end_connected = false;
     }
 
-    if(!sPOWER_PMOS)
+    if(!sPOWER)
     {
         circuit_pmos_end_connected = false;
     }
@@ -33,15 +34,15 @@ bool nmos_circuit_status(uint8_t n)
 {
     bool circuit_nmos_end_connected;
     
-    if(sPOWER_PMOS & (n == 0))
+    if(sPOWER & (n == 0))
     {
         circuit_nmos_end_connected = false;
     }
-    if(sPOWER_PMOS & (n == 1))
+    if(sPOWER & (n == 1))
     {
         circuit_nmos_end_connected = true;
     }
-    if(!sPOWER_PMOS)
+    if(!sPOWER)
     {
         circuit_nmos_end_connected = false;
     }

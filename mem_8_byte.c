@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <unistd.h>
+#include <string.h>
 #include "main.h"
 
 uint8_t bit(uint8_t n, uint8_t s_bit)

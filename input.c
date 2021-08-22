@@ -3,15 +3,16 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <unistd.h>
+#include <string.h>
 #include "main.h"
 
 void check_power(void)
 {
-    if(!sPOWER_PMOS)
+    if(!sPOWER)
     {
         printf("*******WARNING!POWER NOT CONNECTED!*******\n");
     }
-    if(sPOWER_PMOS)
+    if(sPOWER)
     {
         printf("\n------POWER ON------\n");
     }
@@ -67,4 +68,20 @@ uint8_t select_mem_no(void)
     printf("\nWriting to memory block %u...\n", i);
     sleep(2);
     return i;
+}
+
+uint8_t* dec_to_bin(int8_t num)
+{
+    static uint8_t binary[8];
+    int j;
+    for(int i = 7; i >= 0; i--)
+    {
+        j = num >> i;
+        if(j & 1)
+            binary[i] = 1;
+        else
+            binary[i] = 0;
+    } 
+
+    return binary;
 }
