@@ -117,3 +117,15 @@ uint8_t* decoder_extended_input_circuit_c(uint8_t n)
     return decoder_input_extended_c;
 
 }
+
+int8_t mem_bus_control(int8_t num, uint8_t control_bit)
+{
+    uint8_t num_bits[8];
+    for(int i = 0; i < 8; i++)
+    {
+        num_bits[i] = (num >> i) & 1;
+    }
+    num = enabler_num(num_bits, control_bit);
+    //printf("%d", num);
+    return num;
+}

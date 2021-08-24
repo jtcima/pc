@@ -1,5 +1,5 @@
 cc = gcc 
-flags = -c -Wall -O0 -o
+flags = -c -ggdb -Wall -O0 -o
 files = main.o parts.o circuit.o input.o cpu.o mem_8_byte.o 
 
 all: parts.o main.o circuit.o input.o mem_8_byte.o cpu.o final.elf

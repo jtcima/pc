@@ -93,6 +93,7 @@ uint8_t nand_gate_3(uint8_t a, uint8_t b, uint8_t c)
     return output;    
 }
 
+
 uint8_t* decoder(uint8_t a, uint8_t b, uint8_t c)
 {
     static uint8_t decoder_output[8];
@@ -112,6 +113,7 @@ uint8_t* decoder(uint8_t a, uint8_t b, uint8_t c)
 */
     return decoder_output;
 }
+
 
 uint8_t *multiplexer(uint8_t *x, uint8_t *y, uint8_t s)
 {
@@ -194,6 +196,20 @@ uint8_t* enabler(uint8_t * array, uint8_t control_bit)
     }
 
     return output_bit;
+}
+
+uint8_t enabler_num(uint8_t * array, uint8_t control_bit)
+{
+    static uint8_t output_bit[8];
+    uint8_t output;
+    for(int i = 0; i < 8; i++)
+    {
+        output_bit[i] = not_gate(nand_gate(array[i], control_bit));
+        output |= output_bit[i] << i;
+        //printf("%u", output[i]);
+    }
+
+    return output;
 }
 
 

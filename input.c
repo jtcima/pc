@@ -18,21 +18,14 @@ void check_power(void)
     }
 }
 
-uint8_t input(void)
+int8_t input(void)
 {
-    uint8_t num;
-    printf("enter 1 or 0: \n");
-    scanf("%hhu", &num);
+    int8_t num;
+    printf("enter a number: \n");
+    scanf("%hhd", &num);
     return num;
 }
 
-uint8_t input_binary(void)
-{
-    
-
-
-    return 0;
-}
 
 uint8_t decoder_input(void)
 {
@@ -64,9 +57,11 @@ uint8_t select_mem_no(void)
     {
         i++;
     }
+    /*
     printf("\n---Memory Block %hhu Selected!---\n", i);
     printf("\nWriting to memory block %u...\n", i);
     sleep(2);
+    */
     return i;
 }
 
