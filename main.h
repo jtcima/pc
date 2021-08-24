@@ -24,7 +24,7 @@ int8_t mem_bus_control(int8_t num, uint8_t control_bit);
 //memory
 uint8_t bit(uint8_t n, uint8_t s_bit);
 int8_t mem_byte(int8_t num, uint8_t s_bit);
-int8_t *ram_8_byte();
+int8_t ram_8_byte();
 
 //parts
 uint8_t nmos(uint8_t n);

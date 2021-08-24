@@ -61,51 +61,74 @@ int8_t mem_byte(int8_t num, uint8_t s_bit)
     
 }
 
-int8_t* ram_8_byte()
+int8_t ram_8_byte()
 {
     static int8_t memory[8];
     int8_t num = input();
     uint8_t s_bit = set_s_bit();
+    uint8_t mux_s_bit = set_s_bit();
     num = mem_bus_control(num, s_bit);
+    int8_t output = 0;
 
     if(s_bit == 0)
     {
         printf("Can not write to memory! Please enable memory by setting s_bit to 1!\n");
-        return memory;
+        return output;
+    }
+
+    if(mux_s_bit == 0)
+    {
+        printf("Mutiplexer is off! No memory output!\n");
     }
 
     switch(select_mem_no())
     {
         case 0:
             memory[0] = mem_byte(num, s_bit);
+            if(mux_s_bit == 1)
+                output = memory[0];
             break;
 
         case 1:
             memory[1] = mem_byte(num, s_bit);
+            if(mux_s_bit == 1)
+                output = memory[1];
             break;
 
         case 2:
             memory[2] = mem_byte(num, s_bit);
+            if(mux_s_bit == 1)
+                output = memory[2];
             break;
 
         case 3:
             memory[3] = mem_byte(num, s_bit);
+            if(mux_s_bit == 1)
+                output = memory[3];
             break;
 
         case 4:
             memory[4] = mem_byte(num, s_bit);
+            if(mux_s_bit == 1)
+                output = memory[4];
             break;
 
         case 5:
             memory[5] = mem_byte(num, s_bit);
+            if(mux_s_bit == 1)
+                output = memory[5];
             break;
 
         case 6:
             memory[6] = mem_byte(num, s_bit);
+            if(mux_s_bit == 1)
+                output = memory[6];
             break;
 
         case 7:
             memory[7] = mem_byte(num, s_bit);
+            if(mux_s_bit == 1)
+                output = memory[7];
             break;
         /*
         default:
@@ -114,21 +137,15 @@ int8_t* ram_8_byte()
     }
 
 
-    sleep(2);
+ /*   
     printf("Listing of memory blocks: \n");
-    sleep(2);
+
     for(int i = 0; i < 8; i++)
     {
         printf("mem_%d: %d\n",i, memory[i]);
-        sleep(1);
     }
-
-
-    return memory;
-}
-/*
-int8_t mem_final_output(int8_t * memory)
-{
-
-}
+    printf("memory output is: %d\n", output);
 */
+    return output;
+}
+
